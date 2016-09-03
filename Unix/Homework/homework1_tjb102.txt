@@ -1,0 +1,155 @@
+Tanner Burns
+Unix
+Homework 1
+
+1) The general command format of a command is:
+ $ command [[ -]option(s)] [option arguement(s)] [command argument(s)]
+
+   Two commands that take no arguments:
+   whoami
+   true
+
+   Two commands that must take atleast one argument
+   mkdir
+   rm
+
+2) [tanner ~]$cd /usr/include
+   [tanner include]$pwd
+   /usr/include
+   [tanner include]$mkdir ~/header
+   [tanner include]$cp stdio.h ~/header
+   [tanner include]$ls ~/header
+   stdio.h
+   [tanner include]$ls ~/
+   ArgoUML  Documents  header  Pictures  Templates
+   Desktop  Downloads  Music   Public    Videos
+
+   Commands:
+   mkdir ~/header
+   cp stdio.h ~/header
+
+
+3) [tanner ~]$uname -a
+   Linux tanner-vb 3.19.0-49-generic #55~14.04.1-Ubuntu SMP Fri Jan 22 11:24:31 UTC 2016 x86_64 x86_64 x86_64 GNU/Linux
+   [tanner ~]$cat /etc/lsb-release
+   DISTRIB_ID=Ubuntu
+   DISTRIB_RELEASE=14.04
+   DISTRIB_CODENAME=trusty
+   DISTRIB_DESCRIPTION="Ubuntu 14.04.3 LTS"
+
+   Commands:
+   uname -a
+   cat /etc/lsb-release
+
+4) [tanner ~]$pwd
+   /home/tanner
+   [tanner ~]$ls -l
+   total 36
+   drwxr-xr-x 5 tanner tanner 4096 Feb  4 18:58 ArgoUML
+   drwxr-xr-x 2 tanner tanner 4096 Feb  4 19:06 Desktop
+   drwxr-xr-x 4 tanner tanner 4096 Feb  5 01:23 Documents
+   drwxr-xr-x 2 tanner tanner 4096 Feb  4 01:49 Downloads
+   drwxr-xr-x 2 tanner tanner 4096 Jan 27 12:10 Music
+   drwxr-xr-x 2 tanner tanner 4096 Jan 27 21:56 Pictures
+   drwxr-xr-x 2 tanner tanner 4096 Jan 27 12:10 Public
+   drwxr-xr-x 2 tanner tanner 4096 Jan 27 12:10 Templates
+   drwxr-xr-x 2 tanner tanner 4096 Jan 27 12:10 Videos
+
+   Directory:
+   /home/tanner
+
+   Commands:
+   pwd
+   ls -l
+   or  
+   echo $HOME
+   ls $HOME
+
+5) Similarity:
+   Both can be accessed and ran through the command prompt.
+   Same files and directories in each login.
+   
+   Difference:
+   GUI  vs Command Line only.
+   Need User name and password on local system and need IP of system, user name and password for the ssh login.
+   SSH has to go through the server
+  
+   In the ssh you interact with the terminal, then the bash and then ssh through the nic which communicates with the remote machine. In the local machine the bash is accessed straight from the machine and does not have to go through any network.
+
+*For number 6, the folder Objor2016 and Unix2016 for used for compressing two foolders together.
+6a)Using tar with gzip:
+   Compress:
+   [tanner Documents]$ ls
+   Objor2016  school.tar  school.tar.gz  Unix2016
+   [tanner Documents]$ tar -czf ~/Desktop/school.tar.gz Objor2016 Unix2016
+   [tanner Documents]$ ls ~/Desktop
+   exo-terminal-emulator.desktop      runargo.sh     sublime-text-2.desktop
+   Homework 1 - State Diagram.zargo~  school.tar.gz  wireshark.desktop
+ 
+   Command:
+   tar -czf /Path/fileName.tar.gz Directory Directory
+
+   Decompress:
+   [tanner Desktop]$ tar xf school.tar.gz -C ~/Desktop
+   [tanner Desktop]$ ls 
+   exo-terminal-emulator.desktop      runargo.sh              Unix2016
+   Homework 1 - State Diagram.zargo~  school.tar.gz           wireshark.desktop
+   Objor2016                          sublime-text-2.desktop
+
+   Command:
+   tar xf fileName.tar.gz -C /Path
+   
+6b)Using tar with bzip2
+   Compress:
+   [tanner Documents]$ tar -cvjSf school.tar.bz2 Unix2016 Objor2016
+   Unix2016/
+   Unix2016/.homework1.txt.swp
+   Unix2016/homework1.txt
+   Objor2016/
+   Objor2016/Javapract1/
+   Objor2016/Javapract1/hello.java
+   Objor2016/Javapract1/hello.class
+   [tanner Documents]$ ls
+   Objor2016  school.tar.bz2  Unix2016
+
+   Command:
+   tar -cvjSf fileName.tar.bz2 Directory Directory
+
+   Decompress:
+   [tanner Documents]$ ls
+   Objor2016  school.tar.bz2  Unix2016
+   [tanner Documents]$ bzip2 -dc school.tar.bz2 | tar xvf - -C ~/Desktop
+   Unix2016/
+   Unix2016/.homework1.txt.swp
+   Unix2016/homework1.txt
+   Objor2016/
+   Objor2016/Javapract1/
+   Objor2016/Javapract1/hello.java
+   Objor2016/Javapract1/hello.class
+   [tanner Documents]$ ls ~/Desktop
+   exo-terminal-emulator.desktop      runargo.sh              wireshark.desktop
+   Homework 1 - State Diagram.zargo~  sublime-text-2.desktop
+   Objor2016                          Unix2016
+   
+   Command:
+   bzip2 -dc fileName.tar.bz2 | tar xvf - -C /Path
+
+7a)Reading to Editing:
+   When vim opens, it is in read mode, press 'i' to enter insert(editing) mode.
+   Editing to Reading:
+   When in inert(editing) mode, press escape key to go back to read mode.
+
+7b)Copying text:
+   Position cursor of where you want to start the copy, then press v and use thearrows to select the text to copy. Then, press y and move the cursor to where you want to paste the text. Press 'P' for pasting at cursor or 'p' to paste after the cursor
+
+7c)Search string:
+   In read mode press '/' and type the string you want to search, hit enter and the search has began. Press 'n' to go foward in search and 'N' to go backwards.
+
+7d)Jump to Line:
+   In reafd mode, enter the number of the line after ':' and it will jump to that line.
+
+7e)Saving and quiting:
+   To save and quit type 'wq' after ':'.
+   To save but not quit type 'w' after ':'.
+   To quit without saving type 'q!' after ':'.
+   'w' is to write and 'q' is to quit. The '!' causes an override on q.
